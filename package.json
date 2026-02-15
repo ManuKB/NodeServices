@@ -1,19 +1,12 @@
 {
-  "name": "node-express-hello",
+  "name": "node-services",
   "version": "1.0.0",
-  "description": "Simple Express REST API hello world",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
-  },
+  "description": "Lerna monorepo with frontend and backend",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
-    "nodemon": "^2.0.22"
-  },
-  "engines": {
-    "node": ">=14"
+    "lerna": "^6.4.1"
   }
 }
