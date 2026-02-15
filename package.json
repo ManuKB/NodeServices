@@ -6,6 +6,20 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "start": "npm run build:frontend && npm run start:backend",
+    "start:backend": "npm run start --workspace=backend",
+    "dev": "npm run dev --workspace=backend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "build": "lerna run build",
+    "build:backend": "npm run build --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "clean": "lerna clean --yes && rm -rf node_modules",
+    "bootstrap": "lerna bootstrap",
+    "ls": "lerna list",
+    "lint": "lerna run lint --if-present",
+    "test": "lerna run test --if-present"
+  },
   "devDependencies": {
     "lerna": "^6.4.1"
   }
