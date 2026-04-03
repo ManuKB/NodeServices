@@ -1,49 +1,74 @@
-# NodeServices
+# Expense Tracker
 
-Lerna monorepo with **frontend** (HTML UI) and **backend** (Express REST API + static file server).
+Full-stack expense tracker built with **React + Vite** (frontend) and **Express + SQLite** (backend), featuring JWT token-based authentication. Both UI and API are served from a single port.
 
 ## Structure
 
 ```
-packages/
-├── backend/       - Express server (REST API + serves frontend)
-└── frontend/      - Simple HTML UI
+server/          - Express backend (REST API + SQLite + JWT auth)
+client/          - React Vite frontend (TypeScript + Tailwind CSS)
 ```
 
 ## Setup
 
-Install dependencies from root:
+Install all dependencies:
 
-```powershell
-npm install
+```bash
+cd server && npm install
+cd ../client && npm install
 ```
 
-## Run
+## Development
 
-Start the backend server (serves UI + API):
+Run both frontend and backend in development mode:
 
-```powershell
-npm run start --workspace=backend
+```bash
+# Terminal 1 - Start backend (port 8080)
+cd server && npm run dev
+
+# Terminal 2 - Start frontend dev server (port 5173, proxies /api to 8080)
+cd client && npm run dev
 ```
 
-Or with auto-reload (dev):
+## Production
 
-```powershell
-npm run dev --workspace=backend
+Build the frontend and start the server:
+
+```bash
+cd client && npm run build
+cd ../server && npm start
 ```
 
 ## Access
 
-- **UI:** http://localhost:3000/
-- **API:** http://localhost:3000/api/hello
-- **Status:** http://localhost:3000/api/status
+- **UI:** http://localhost:8080/
+- **API:** http://localhost:8080/api
 
 ## API Endpoints
 
-- `GET /api/hello` — returns JSON with greeting
-- `GET /api/status` — returns server status
-- `GET /` — serves frontend HTML UI
+### Auth
+- `POST /api/auth/register` — Register a new user
+- `POST /api/auth/login` — Login and receive JWT token
+- `GET /api/auth/me` — Get current user profile (auth required)
+- `PUT /api/auth/users/:id` — Update a user (auth required)
+- `GET /api/auth/users` — List all users (admin only)
+
+### Expenses (all require auth)
+- `GET /api/expenses` — List expenses (optional `?month=&year=` filters)
+- `GET /api/expenses/summary` — Monthly summary for dashboard (optional `?year=`)
+- `POST /api/expenses` — Add a new expense
+- `PUT /api/expenses/:id` — Update an expense
+- `DELETE /api/expenses/:id` — Delete an expense
+
+### Health
+- `GET /api/status` — Server health check
+
+## Database
+
+SQLite database with two tables:
+- **users** — id, name, email, password, role, active
+- **expenses** — id, name, date, amount, added_by, updated_by, added_date, updated_date
 
 ## Port
 
-Set with `PORT` environment variable (default: 3000).
+Default: **8080**. Override with the `PORT` environment variable.
