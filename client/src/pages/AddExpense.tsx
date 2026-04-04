@@ -39,12 +39,12 @@ export default function AddExpense() {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Add New Expense</h1>
+    <div className="max-w-lg mx-auto animate-fade-in-up">
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Add New Expense</h1>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         {error && (
-          <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm">
+          <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm animate-scale-in">
             {error}
           </div>
         )}
@@ -56,7 +56,7 @@ export default function AddExpense() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-4 py-2.5 sm:py-2 border border-gray-300 rounded-lg focus-ring-primary outline-none transition-colors text-base sm:text-sm"
               placeholder="e.g., Groceries, Electricity Bill"
               required
             />
@@ -67,7 +67,7 @@ export default function AddExpense() {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-4 py-2.5 sm:py-2 border border-gray-300 rounded-lg focus-ring-primary outline-none transition-colors text-base sm:text-sm"
               required
             />
           </div>
@@ -79,7 +79,7 @@ export default function AddExpense() {
               min="0.01"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-4 py-2.5 sm:py-2 border border-gray-300 rounded-lg focus-ring-primary outline-none transition-colors text-base sm:text-sm"
               placeholder="0.00"
               required
             />
@@ -88,7 +88,7 @@ export default function AddExpense() {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50"
+              className="flex-1 bg-primary text-white py-2.5 sm:py-2 px-4 rounded-lg hover-bg-primary-dark transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 btn-press"
             >
               <PlusCircle size={18} />
               {loading ? 'Adding...' : 'Add Expense'}
@@ -96,7 +96,7 @@ export default function AddExpense() {
             <button
               type="button"
               onClick={() => navigate('/expenses')}
-              className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors font-medium"
+              className="px-6 py-2.5 sm:py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors font-medium btn-press"
             >
               Cancel
             </button>

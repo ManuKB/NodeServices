@@ -28,14 +28,14 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-indigo-600">ExpenseTracker</h1>
-          <p className="text-gray-500 mt-2">Sign in to your account</p>
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8 animate-scale-in">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-primary">ExpenseTracker</h1>
+          <p className="text-gray-500 mt-2 text-sm sm:text-base">Sign in to your account</p>
         </div>
 
         {error && (
-          <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm">
+          <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm animate-scale-in">
             {error}
           </div>
         )}
@@ -47,7 +47,7 @@ export default function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-4 py-2.5 sm:py-2 border border-gray-300 rounded-lg focus-ring-primary outline-none transition-colors text-base sm:text-sm"
               placeholder="you@example.com"
               required
             />
@@ -58,7 +58,7 @@ export default function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+              className="w-full px-4 py-2.5 sm:py-2 border border-gray-300 rounded-lg focus-ring-primary outline-none transition-colors text-base sm:text-sm"
               placeholder="Enter your password"
               required
             />
@@ -66,7 +66,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-primary text-white py-2.5 sm:py-2 px-4 rounded-lg hover-bg-primary-dark transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 btn-press"
           >
             <LogIn size={18} />
             {loading ? 'Signing in...' : 'Sign In'}
@@ -75,7 +75,7 @@ export default function Login() {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{' '}
-          <Link to="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
+          <Link to="/register" className="text-primary font-medium">
             Sign up
           </Link>
         </p>
