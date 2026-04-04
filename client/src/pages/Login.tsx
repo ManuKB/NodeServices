@@ -74,10 +74,10 @@ export default function Login() {
         </form>
 
         <p className="text-center text-sm text-gray-500 mt-6">
-          Don't have an account?{' '}
-          <Link to="/register" className="text-primary font-medium">
+          Don't have an account?{' '} reach Mohan KB
+          {/*<Link to="/register" className="text-primary font-medium">
             Sign up
-          </Link>
+          </Link>*/}
         </p>
       </div>
     </div>
