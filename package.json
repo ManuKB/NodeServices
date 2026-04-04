@@ -7,13 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:server": "lerna run dev --scope=@expense-tracker/server --stream",
-    "dev:client": "lerna run dev --scope=@expense-tracker/client --stream",
-    "build:client": "lerna run build --scope=@expense-tracker/client --stream",
-    "start": "lerna run start --scope=@expense-tracker/server --stream",
+    "dev:server": "npm run dev -w @expense-tracker/server",
+    "dev:client": "npm run dev -w @expense-tracker/client",
+    "build:client": "npm run build -w @expense-tracker/client",
+    "start": "npm run start -w @expense-tracker/server",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "lint": "lerna run lint --stream",
-    "clean": "lerna clean --yes"
+    "lint": "npm run lint -w @expense-tracker/client",
+    "typecheck": "npm run typecheck -w @expense-tracker/client"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
