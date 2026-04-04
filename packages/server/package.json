@@ -1,5 +1,5 @@
 {
-  "name": "expense-tracker-server",
+  "name": "@expense-tracker/server",
   "version": "1.0.0",
   "description": "Express server with SQLite and JWT authentication",
   "main": "src/index.js",

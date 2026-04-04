@@ -1,33 +1,36 @@
 # Expense Tracker
 
-Full-stack expense tracker built with **React + Vite** (frontend) and **Express + SQLite** (backend), featuring JWT token-based authentication. Both UI and API are served from a single port.
+Full-stack expense tracker built with **React + Vite** (frontend) and **Express + SQLite** (backend), featuring JWT token-based authentication. Managed as a **Lerna monorepo** with npm workspaces. Both UI and API are served from a single port.
 
 ## Structure
 
 ```
-server/          - Express backend (REST API + SQLite + JWT auth)
-client/          - React Vite frontend (TypeScript + Tailwind CSS)
+packages/
+├── client/      - React Vite frontend (TypeScript + Tailwind CSS)
+└── server/      - Express backend (REST API + SQLite + JWT auth)
 ```
 
 ## Setup
 
-Install all dependencies:
+Install all dependencies from the root:
 
 ```bash
-cd server && npm install
-cd ../client && npm install
+npm install
 ```
+
+This uses npm workspaces to install dependencies for all packages.
 
 ## Development
 
 Run both frontend and backend in development mode:
 
 ```bash
-# Terminal 1 - Start backend (port 8080)
-cd server && npm run dev
+# Both at once
+npm run dev
 
-# Terminal 2 - Start frontend dev server (port 5173, proxies /api to 8080)
-cd client && npm run dev
+# Or individually:
+npm run dev:server    # Backend on port 8080
+npm run dev:client    # Frontend dev server on port 5173 (proxies /api to 8080)
 ```
 
 ## Production
@@ -35,8 +38,8 @@ cd client && npm run dev
 Build the frontend and start the server:
 
 ```bash
-cd client && npm run build
-cd ../server && npm start
+npm run build:client
+npm start
 ```
 
 ## Access
