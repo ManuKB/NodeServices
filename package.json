@@ -1,26 +1,17 @@
 {
-  "name": "node-services",
+  "name": "expense-tracker",
   "version": "1.0.0",
-  "description": "Lerna monorepo with frontend and backend",
+  "description": "Full-stack expense tracker with React Vite frontend and Express backend",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "start": "npm run build:frontend && npm run start:backend",
-    "start:backend": "npm run start --workspace=backend",
-    "dev": "npm run dev --workspace=backend",
-    "dev:backend": "npm run dev --workspace=backend",
-    "build": "lerna run build",
-    "build:backend": "npm run build --workspace=backend",
-    "build:frontend": "npm run build --workspace=frontend",
-    "clean": "lerna clean --yes && rm -rf node_modules",
-    "bootstrap": "lerna bootstrap",
-    "ls": "lerna list",
-    "lint": "lerna run lint --if-present",
-    "test": "lerna run test --if-present"
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
   },
   "devDependencies": {
-    "lerna": "^6.4.1"
+    "concurrently": "^8.2.2"
   }
 }
