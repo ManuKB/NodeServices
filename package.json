@@ -1,17 +1,22 @@
 {
   "name": "expense-tracker",
   "version": "1.0.0",
-  "description": "Full-stack expense tracker with React Vite frontend and Express backend",
+  "description": "Full-stack expense tracker monorepo with React Vite frontend and Express backend",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "install:all": "cd server && npm install && cd ../client && npm install",
-    "dev:server": "cd server && npm run dev",
-    "dev:client": "cd client && npm run dev",
-    "build:client": "cd client && npm run build",
-    "start": "cd server && npm start",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+    "dev:server": "lerna run dev --scope=@expense-tracker/server --stream",
+    "dev:client": "lerna run dev --scope=@expense-tracker/client --stream",
+    "build:client": "lerna run build --scope=@expense-tracker/client --stream",
+    "start": "lerna run start --scope=@expense-tracker/server --stream",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "lint": "lerna run lint --stream",
+    "clean": "lerna clean --yes"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "lerna": "^8.1.0"
   }
 }
